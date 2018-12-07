@@ -1,3 +1,9 @@
+/*
+This script will rename all the layers.  
+Examples:
+ATV-GGT = TGG-VTA
+Background = dnuorgkcaB
+*/
 var doc = app.activeDocument;
 var allLayers = [];
 allLayers = collectAllLayers(doc, allLayers);
@@ -14,6 +20,7 @@ function collectAllLayers (doc, allLayers){
     return allLayers;
 }
 
+//This function reverses the layer name
 function reverseName (str)
 {
     var newString = "";
@@ -21,19 +28,12 @@ function reverseName (str)
         newString += str[i];
     }
     return newString;
-
 }
 
-
-//set number of parent layers (layer folders)
-for (var i = 0; i < allLayers.length; i++) {
-
+//Reverses the name of all the layers
+for (var i = 0; i < allLayers.length; i++) 
+{
     var psLayer = allLayers[i];
     psLayer.name=reverseName(psLayer.name);
-
 }
-
-
-
-
 alert("Successfully renamed layers")
